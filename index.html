@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRT Vending Machine</title>
+  <link rel="stylesheet" href="./style_index.css">
+</head>
+<body>
+
+  <!-- Progress Bar Section -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar">
+      20%
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <div class="header">
+    <!-- Logo on the left side -->
+    <img src="./dmtcl.png" alt="DMTC Logo">
+    <h3 id="headerText">Dhaka Mass Transit Company Limited (DMTCL)</h3>
+    <div class="top-right">
+      <button id="themeToggle" class="nav-btn">Dark</button>
+      <button id="langToggle" class="nav-btn">বাংলা</button>
+    </div>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="main">
+   <a href="./destination.html"> <button class="btn">Single Journey Ticket</button> </a>
+   <a href="./place_mrt.html"><button class="btn">Top-up</button></a> 
+ <a href="./check_balance_mrt_place.html">  <button class="btn">Check Balance</button> </a>
+    <button style="display: none;" class="btn">Help</button>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <p id="footerText">Contact: 123-456-7890 | Email: support@metro.com</p>
+  </div>
+
+  <script>
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+
+    // Language Toggle Logic (Simple Toggle between Bangla and English)
+    const langToggle = document.getElementById('langToggle');
+    const headerText = document.getElementById('headerText');
+    const footerText = document.getElementById('footerText');
+    langToggle.addEventListener('click', () => {
+      const buttons = document.querySelectorAll('.btn');
+      if (langToggle.innerText === 'বাংলা') {
+        buttons[0].innerText = 'একক যাত্রার টিকেট';
+        buttons[1].innerText = 'টপ-আপ';
+        buttons[2].innerText = 'ব্যালেন্স দেখুন';
+        buttons[3].innerText = 'সাহায্য';
+        headerText.innerText = 'ঢাকা ম্যাস ট্রানজিট কোম্পানি লিমিটেড (ডিএমটিসিএল)';
+        footerText.innerText = 'যোগাযোগ: ১২৩-৪৫৬-৭৮৯০ | ইমেইল: support@metro.com';
+        langToggle.innerText = 'English';
+      } else {
+        buttons[0].innerText = 'Single Journey Ticket';
+        buttons[1].innerText = 'Top-up';
+        buttons[2].innerText = 'Check Balance';
+        buttons[3].innerText = 'Help';
+        headerText.innerText = 'Dhaka Mass Transit Company Limited (DMTCL)';
+        footerText.innerText = 'Contact: 123-456-7890 | Email: support@metro.com';
+        langToggle.innerText = 'বাংলা';
+      }
+    });
+  </script>
+</body>
+</html>

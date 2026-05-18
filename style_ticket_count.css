@@ -1,0 +1,292 @@
+    /* Reset default margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      transition: background-color 0.5s ease;
+    }
+
+    /* Progress Bar Styling */
+    .progress-container {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      background-color: #ccc;
+      height: 30px; /* Increased height */
+    }
+
+    .progress-bar {
+      width: 60%; /* 25% fill */
+      height: 100%;
+      background-color: #00674f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 14px;
+    }
+
+    /* Header Styling */
+    .header {
+      position: absolute;
+      top: 35px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      padding: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #headerText {
+      color: #00674f;
+    }
+
+    /* Logo styling */
+    .header img {
+      height: 50px; /* Adjust height of the logo */
+      margin-right: 10px; /* Space between logo and text */
+    }
+
+    .header h3 {
+      margin: 10px 0;
+    }
+
+    /* Top Right Corner Buttons */
+    .top-right {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .nav-btn {
+      background-color: #00674f;
+      color: white;
+      border: none;
+      padding: 10px 20px; /* Increased button size */
+      margin: 5px;
+      cursor: pointer;
+      font-size: 20px; /* Increased font size */
+      border-radius: 5px;
+    }
+
+    .nav-btn:hover {
+      background-color: #0a3c30;
+    }
+
+    /* Main Content Styling */
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      margin-top: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: row; /* Align buttons vertically */
+      gap: 10px; /* Space between buttons */
+      margin : 40px 0px 00px 0px;
+    }
+
+    .button-container-btn {
+      display: flex;
+      flex-direction: column; /* Align buttons vertically */
+      gap: 10px; /* Space between buttons */
+      margin : 40px 0px 00px 0px;
+    }
+
+/*  confirm button */
+
+    #confirmButton{
+      background-color: #00674f;
+      color: white;
+      border: none;
+      padding: 15px 80px; /* Adjusted size */
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%; /* Fixed width for buttons */
+      font-weight: bold;
+    }
+
+    #confirmButton:hover{
+      background-color: #0a3c30;
+    }
+
+/*  Clear Button */
+#clearButton{
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 15px 80px; /* Adjusted size */
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%; /* Fixed width for buttons */
+  font-weight: bold;
+}
+
+#clearButton:hover{
+  background-color: #df2e22;
+}
+
+
+
+/* ticket buttons */
+    .ticket-btn {
+      background-color: white;
+      color: #00674f;
+      border: none;
+      padding: 15px 30px; /* Adjusted size */
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 5px;
+      border : 1px solid #00674f;
+      width: 150px; /* Fixed width for buttons */
+      font-weight: bold;
+      font-size:x-large;
+    }
+
+    .ticket-btn:hover {
+      background-color: #f44336;
+      color:white;
+      border: 1px;
+    }
+
+
+    .ticket-btn.selected {
+      background-color: #f44336; /* Change the selected button to orange */
+      color: white;
+    }
+    /* Footer Styling */
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: #00674f;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .footer p {
+      margin: 5px 0;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* Dark Theme Styles */
+    .dark-theme {
+      background-color: #333;
+      color: white;
+    }
+
+    .dark-theme .header {
+      background-color: #444;
+    }
+
+    .dark-theme .ticket-btn {
+      background-color: #73e6cb;
+      color: black;
+    }
+
+    .dark-theme .ticket-btn:hover {
+      background-color: #3ebb9e;
+    }
+
+    .dark-theme .nav-btn {
+      background-color: #73e6cb;
+      color: black;
+    }
+
+    .dark-theme .nav-btn:hover {
+      background-color: #3ebb9e;
+    }
+
+    .dark-theme .progress-bar {
+      background-color: #3ebb9e;
+      color: black;
+    }
+
+    .dark-theme .footer {
+      background-color: #444;
+    }
+
+    .dark-theme #headerText {
+      color: white;
+    }
+
+    .dark-theme  #confirmButton{
+      background-color: #73e6cb;
+      color:black;
+    }
+
+
+    .dark-theme  #clearButton{
+
+      background-color: #fc685d;
+      color:black;
+    }
+
+    /*arrow  */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      width: 300px; /* Adjust the width based on your layout */
+      margin: 00px auto; /* Center horizontally */
+    }
+
+    .btn-arrow {
+      display: inline-block;
+      background-color: #00674f;
+      color: white;
+      padding: 12px 25px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-arrow:hover {
+      background-color: #0a3c30;
+    }
+
+    .btn-arrow svg {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    .btn-next svg {
+      margin-right: 0;
+      margin-left: 10px; /* Adjust for icon alignment on the right */
+    }
+
+    .btn-back svg {
+      margin-right: 10px; /* Adjust for icon alignment on the left */
+    }
+
+    /* Make the Next button icon point to the right */
+    .btn-next svg {
+      transform: rotate(180deg);
+    }

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRT Vending Machine</title>
+  <link rel="stylesheet" href="./stye_check_balance_main_screen.css">
+</head>
+<body>
+
+  <!-- Progress Bar Section -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar">
+      25%
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <div class="header">
+    <!-- Logo on the left side -->
+    <img src="./dmtcl.png" alt="DMTC Logo">
+    <h3 id="headerText">Dhaka Mass Transit Company Limited (DMTCL)</h3>
+    <div class="top-right">
+      <button id="themeToggle" class="nav-btn">Dark</button>
+      <button id="langToggle" class="nav-btn">বাংলা</button>
+    </div>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="main">
+    <div class="card-info">
+        <h2>MRT Pass Details</h2>
+        
+        <div class="info-container">
+          <!-- First column -->
+          <div class="info-column">
+            <div class="info-group">
+              <label for="name">Name :</label>
+              <span id="name">Md. Zahidur Rahman</span>
+            </div>
+            
+            <div class="info-group">
+                <label for="bday">Birthday :</label>
+                <span id="nid">09 August 1995</span>
+              </div>
+            
+            <div class="info-group">
+              <label for="nid">NID : </label>
+              <span id="nid">1234567890123</span>
+            </div>
+        
+            <div class="info-group">
+              <label for="mrtPassId">MRT Pass ID : </label>
+              <span id="mrtPassId">MRT123456</span>
+            </div>
+          </div>
+    
+          <!-- Second column -->
+          <div class="info-column">
+            <div class="info-group">
+              <label for="phone">Phone Number : </label>
+              <span id="phone">+880 161 231 8884</span>
+            </div>
+        
+            <div class="info-group">
+              <label for="balance">Current Balance : </label>
+              <span id="balance">৳ 150.00</span>
+            </div>
+        
+            <div class="info-group">
+              <label for="lastEntry">Last Entry : </label>
+              <span id="lastEntry">Uttara North, 01/10/2024, 09:30 AM</span>
+            </div>
+        
+            <div class="info-group">
+              <label for="lastExit">Last Exit : </label>
+              <span id="lastExit">Farmgate, 01/10/2024, 10:15 AM</span>
+            </div>
+            
+          </div>
+          
+          
+        </div>
+        <a href="./amount.html">
+            <button class="recharge-btn">Recharge Here</button>
+        </a>
+        <a href="./index.html"><button class="back-btn">Back</button></a>
+            
+        </a>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <p id="footerText">Contact: 123-456-7890 | Email: support@metro.com</p>
+  </div>
+
+  <script>
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+
+    // Language Toggle Logic (Simple Toggle between Bangla and English)
+    const langToggle = document.getElementById('langToggle');
+    const headerText = document.getElementById('headerText');
+    const footerText = document.getElementById('footerText');
+    langToggle.addEventListener('click', () => {
+      const buttons = document.querySelectorAll('.btn');
+      if (langToggle.innerText === 'বাংলা') {
+     
+        headerText.innerText = 'ঢাকা ম্যাস ট্রানজিট কোম্পানি লিমিটেড (ডিএমটিসিএল)';
+        footerText.innerText = 'যোগাযোগ: ১২৩-৪৫৬-৭৮৯০ | ইমেইল: support@metro.com';
+        langToggle.innerText = 'English';
+      } else {
+ 
+        headerText.innerText = 'Dhaka Mass Transit Company Limited (DMTCL)';
+        footerText.innerText = 'Contact: 123-456-7890 | Email: support@metro.com';
+        langToggle.innerText = 'বাংলা';
+      }
+    });
+  </script>
+</body>
+</html>

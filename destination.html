@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRT Vending Machine</title>
+  <link rel="stylesheet" href="./style_destination.css">
+</head>
+<body>
+
+  <!-- Progress Bar Section -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar">
+      40%
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <div class="header">
+    <!-- Logo on the left side -->
+    <img src="./dmtcl.png" alt="DMTC Logo">
+    <h2 id="companyName">Dhaka Mass Transit Company Limited (DMTCL)</h2>
+    <div class="top-right">
+      <button style="font-weight: bold;" id="themeToggle" class="nav-btn">Dark</button>
+      <button style="font-weight: bold;" id="langToggle" class="nav-btn">বাংলা</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left-column">
+      <h1 style="color:#00674f;" id="selectStation">Single Journey Ticket Service</h1>  
+      <h2 class="destination_h2" style=" margin-top: 15px;" id="selectStation">Please Select your Destination Station:</h2>
+        <div class="station-selection">
+            <button class="station-btn" data-price="60">Uttara North</button>
+            <button class="station-btn" data-price="55">Uttara Center</button>
+            <button class="station-btn" data-price="50">Uttara South</button>
+            <button class="station-btn" data-price="45">Pallabi</button>
+            <button class="station-btn" data-price="40">Mirpur 11</button>
+            <button class="station-btn" data-price="35">Kazipara</button>
+            <button class="station-btn" data-price="30">Shewrapara</button>
+            <button class="station-btn" data-price="25">Agargaon</button>
+            <button class="station-btn" data-price="20">Farmgate</button>
+            <button class="station-btn" data-price="15">Kawran Bazar</button>
+            <button class="station-btn" data-price="10">Shahbagh</button>
+            <button class="station-btn station-btn-current" data-price="0">University of Dhaka</button>
+        </div>
+    </div>
+    
+    <div class="right-column">
+      <div class="travel-info-card">
+        <h3 id="travelInfoHeader">Selected Travel Information</h3>
+        <div class="info">
+            <p><strong id="boardingLabel">Boarding Station:</strong></p> 
+            <p><span id="boardingInfo">University of Dhaka</span></p>
+            <p><strong id="destinationLabel">Destination Station:</strong></p> 
+            <p><span id="destinationInfo">None</span></p>
+            <p><strong id="priceLabel">Ticket Price:</strong></p> 
+            <p><span id="priceInfo">৳ 0</span></p>
+
+            <button class="confirm-btn" id="confirmBtn">Confirm Selection</button>
+            <button class="clear-btn" id="clearBtn">Clear Selection</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="button-container">
+    <!-- Back Button -->
+    
+
+    <button class="btn-arrow btn-back" onclick="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button> 
+
+    <!-- Next Button -->
+    <button class="btn-arrow btn-next" onclick="goNext()">
+      Next
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+  </div>
+  <!-- Footer Section -->
+  <div class="footer">
+    <p style="font-weight: bold;" id="contactInfo">Contact: 123-456-7890 | Email: support@metro.com</p>
+  </div>
+
+  <script>
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+
+    // Language Toggle Logic (Simple Toggle between Bangla and English)
+    const langToggle = document.getElementById('langToggle');
+    langToggle.addEventListener('click', () => {
+      const buttons = document.querySelectorAll('.station-btn');
+      const companyName = document.getElementById('companyName');
+      const selectStation = document.getElementById('selectStation');
+      const travelInfoHeader = document.getElementById('travelInfoHeader');
+      const boardingLabel = document.getElementById('boardingLabel');
+      const destinationLabel = document.getElementById('destinationLabel');
+      const priceLabel = document.getElementById('priceLabel');
+      const confirmBtn = document.getElementById('confirmBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const contactInfo = document.getElementById('contactInfo');
+
+      if (langToggle.innerText === 'বাংলা') {
+        // Change station button text
+        buttons[0].innerText = 'উত্তরা উত্তর';
+        buttons[1].innerText = 'উত্তরা কেন্দ্র';
+        buttons[2].innerText = 'উত্তরা দক্ষিণ';
+        buttons[3].innerText = 'পল্লবী';
+        buttons[4].innerText = 'মিরপুর ১১';
+        buttons[5].innerText = 'কাজীপাড়া';
+        buttons[6].innerText = 'শেওড়াপাড়া';
+        buttons[7].innerText = 'আগারগাঁও';
+        buttons[8].innerText = 'ফার্মগেট';
+        buttons[9].innerText = 'কাওরান বাজার';
+        buttons[10].innerText = 'শাহবাগ';
+        buttons[11].innerText = 'ঢাকা বিশ্ববিদ্যালয়';
+
+        // Change other texts to Bangla
+        companyName.innerText = 'ঢাকা ম্যাস ট্রানজিট কোম্পানি লিমিটেড (ডিএমটিসিএল)';
+        selectStation.innerText = 'অনুগ্রহ করে আপনার গন্তব্যস্থান নির্বাচন করুন:';
+        travelInfoHeader.innerText = 'নির্বাচিত ভ্রমণ তথ্য';
+        boardingLabel.innerText = 'বোর্ডিং স্টেশন:';
+        destinationLabel.innerText = 'গন্তব্যস্থান স্টেশন:';
+        priceLabel.innerText = 'টিকিট মূল্য:';
+        confirmBtn.innerText = 'নির্বাচন নিশ্চিত করুন';
+        clearBtn.innerText = 'নির্বাচন মুছুন';
+        contactInfo.innerText = 'যোগাযোগ: ১২৩-৪৫৬-৭৮৯০ | ইমেইল: support@metro.com';
+        
+        langToggle.innerText = 'English';
+      } else {
+        // Change station button text back to English
+        buttons[0].innerText = 'Uttara North';
+        buttons[1].innerText = 'Uttara Center';
+        buttons[2].innerText = 'Uttara South';
+        buttons[3].innerText = 'Pallabi';
+        buttons[4].innerText = 'Mirpur 11';
+        buttons[5].innerText = 'Kazipara';
+        buttons[6].innerText = 'Shewrapara';
+        buttons[7].innerText = 'Agargaon';
+        buttons[8].innerText = 'Farmgate';
+        buttons[9].innerText = 'Kawran Bazar';
+        buttons[10].innerText = 'Shahbagh';
+        buttons[11].innerText = 'University of Dhaka';
+
+        // Change other texts back to English
+        companyName.innerText = 'Dhaka Mass Transit Company Limited (DMTCL)';
+        selectStation.innerText = 'Please Select your Destination Station:';
+        travelInfoHeader.innerText = 'Selected Travel Information';
+        boardingLabel.innerText = 'Boarding Station:';
+        destinationLabel.innerText = 'Destination Station:';
+        priceLabel.innerText = 'Ticket Price:';
+        confirmBtn.innerText = 'Confirm Selection';
+        clearBtn.innerText = 'Clear Selection';
+        contactInfo.innerText = 'Contact: 123-456-7890 | Email: support@metro.com';
+
+        langToggle.innerText = 'বাংলা';
+      }
+    });
+    function goBack() {
+      window.history.back(); // Go to the previous page
+    }
+
+    function goNext() {
+      window.location.href = './ticket_count.html'; // Go to the next page (adjust the URL)
+    }
+    // Station Selection Logic
+    const stationButtons = document.querySelectorAll('.station-btn');
+    const boardingInfo = document.getElementById('boardingInfo');
+    const destinationInfo = document.getElementById('destinationInfo');
+    const priceInfo = document.getElementById('priceInfo');
+
+    // Add click event for each station button
+    stationButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove the 'selected' class from all buttons
+        stationButtons.forEach(btn => btn.classList.remove('selected'));
+
+        // Add the 'selected' class to the clicked button
+        button.classList.add('selected');
+
+        // Update the destination info text and price info
+        destinationInfo.innerText = button.innerText;
+        priceInfo.innerText = `৳ ${button.getAttribute('data-price')}`;
+      });
+    });
+
+    // Clear Selection Logic
+    const clearBtnElement = document.getElementById('clearBtn');
+    clearBtnElement.addEventListener('click', () => {
+       
+      destinationInfo.innerText = 'None';
+      priceInfo.innerText = '৳ 0';
+      stationButtons.forEach(btn => btn.classList.remove('selected'));
+    });
+
+    // Confirm Selection Logic (can be expanded to submit selections)
+    const confirmBtnElement = document.getElementById('confirmBtn');
+    confirmBtnElement.addEventListener('click', () => {
+   
+      if(priceInfo.innerText!="৳ 0"){
+        window.location.href = "./ticket_count.html";
+      }
+      
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Body Styling */
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    transition: background-color 0.5s ease;
+    font-weight: bold;
+  }
+
+  /* Progress Bar Styling */
+  .progress-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #ccc;
+    height: 30px; /* Increased height */
+  }
+
+  .progress-bar {
+    width: 25%; /* 25% fill */
+    height: 100%;
+    background-color: #00674f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+  }
+
+  /* Header Styling */
+  .header {
+    position: absolute;
+    top: 35px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  #headerText{
+    color:#00674f;
+  }
+
+  /* Logo styling */
+  .header img {
+    height: 50px; /* Adjust height of the logo */
+    margin-right: 10px; /* Space between logo and text */
+  }
+
+  .header h3 {
+    margin: 10px 0;
+  }
+
+  /* Top Right Corner Buttons */
+  .top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .btn {
+    background-color: #00674f;
+    color: white;
+    border: none;
+    padding: 20px 40px; /* Increased button size */
+    margin: 10px;
+    cursor: pointer;
+    font-size: 20px; /* Increased font size */
+    border-radius: 5px;
+  }
+
+  .btn:hover {
+    background-color: #0a3c30;
+  }
+
+  /* nav button */
+  .nav-btn {
+    background-color: #00674f;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Increased button size */
+    margin: 5px;
+    cursor: pointer;
+    font-size: 20px; /* Increased font size */
+    border-radius: 5px;
+  }
+
+  .nav-btn:hover {
+    background-color: #0a3c30;
+  }
+
+  /* Main Content Styling */
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 55px;
+  }
+
+  .main .btn {
+    margin: 20px 0;
+    width: 300px; /* Increased width of buttons */
+  }
+
+  /* Footer Styling */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #00674f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .footer p {
+    margin: 5px 0;
+  }
+
+  .footer a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  /* Dark Theme Styles */
+  .dark-theme {
+    background-color: #333;
+    color: white;
+  }
+
+  .dark-theme .header {
+    background-color: #444;
+  }
+
+  .dark-theme .btn {
+    background-color: #73e6cb;
+    color: black;
+  }
+
+  .dark-theme .btn:hover {
+    background-color: #3ebb9e;
+  }
+
+  .dark-theme .nav-btn {
+    background-color: #73e6cb;
+    color: black;
+  }
+
+  .dark-theme .nav-btn:hover {
+    background-color: #3ebb9e;
+  }
+
+  .dark-theme .progress-bar {
+    background-color: #3ebb9e;
+    color: black;
+  }
+
+  .dark-theme .footer {
+    background-color: #444;
+  }
+
+
+  .dark-theme  #headerText{
+    color:white;
+  }
+
+  .btn{
+    font-weight: bold;
+  }
+
+
+  /*  */
+  .card-info {
+    background-color: white;
+    width: 600px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-info h2 {
+    color: #00674f;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .info-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .info-column {
+    width: 48%;
+  }
+
+  .info-group {
+    margin-bottom: 15px;
+  }
+
+  .info-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .info-group span {
+    font-size: 16px;
+    color: #333;
+  }
+
+  .recharge-btn {
+    display: block;
+    width: 100%;
+    background-color: #00674f;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .recharge-btn:hover {
+    background-color: #0a3c30;
+  }
+
+  .back-btn {
+    display: block;
+    width: 100%;
+    background-color: #00674f;
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .recharge-btn:hover {
+    background-color: #0a3c30;
+  }

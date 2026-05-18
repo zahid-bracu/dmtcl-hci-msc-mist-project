@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRT Vending Machine</title>
+  <link rel="stylesheet" href="./style_payment_card.css">
+  <style>
+   
+  
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar Section -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar">
+      80%
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <div class="header">
+    <!-- Logo on the left side -->
+    <img src="./dmtcl.png" alt="DMTC Logo">
+    <h2 id="headerText">Dhaka Mass Transit Company Limited (DMTCL)</h2>
+    <div class="top-right">
+      <button id="themeToggle" style="font-weight: bold;" class="nav-btn">Dark</button>
+      <button id="langToggle" style="font-weight: bold;" class="nav-btn">বাংলা</button>
+    </div>
+  </div>
+
+  <!-- Main Section -->
+  <div class="main">
+    <div class="button-container">
+        <h1 class="button-container-header-h1">Top-up Service</h1>
+        <h2 class="button-container-header">Please Select your Payment method</h2>
+      <button id="cashBtn" class="payment-btn">Cash</button>
+      <button id="mobileBtn" class="payment-btn">Mobile Wallet</button>
+      <button id="cardBtn" class="payment-btn">Debit/Credit Card</button>
+    </div>
+
+
+    <div class="button-container-arrow">
+      <!-- Back Button -->
+      <button class="btn-arrow btn-back" onclick="goBack()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Back
+      </button>
+  
+      <!-- Next Button
+      <button class="btn-arrow btn-next" onclick="goNext()">
+        Next
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button> -->
+    </div>
+  
+  </div>
+
+
+
+  <!-- Modal Section : cash -->
+  <div id="cashModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-card">
+        <div class="container-col">
+          <div class="column column2">
+            <h2 style="text-align: center;">Transactions</h2>
+            <div class="total-amount-grid" style="text-align: left;">
+              <span>Total Amount : </span>
+              <span class="currency-symbol">TK</span>
+              <span class="amount-value">300</span>
+            </div>
+
+            <div class="total-amount-grid" style="text-align: left;">
+              <span>Inserted Amount : </span>
+              <span class="currency-symbol">TK</span>
+              <span class="amount-value">300</span>
+            </div>
+            <hr>
+            <div class="total-amount-grid" style="text-align: left;">
+              <span>Refund : </span>
+              <span class="currency-symbol">TK</span>
+              <span class="amount-value">00</span>
+            </div>
+
+              <!-- Alert 1 -->
+              <div style="padding: 25px; background-color: #faf6e9; color: #ff2010;border:1px solid rgb(255, 225, 201); border-radius: 5px; margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 20px;font-weight: bold;">
+                Enter the required amount of money.
+                <!-- প্রয়োজনীয় টাকা প্রবেশ করান -->
+              </div>
+
+
+              <div style="padding: 25px; background-color: #faf6e9; color: #ff2010;border:1px solid rgb(255, 225, 201); border-radius: 5px; margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 20px;font-weight: bold;">
+                1000, 500, 200, and 100 currency notes are not accepted
+                <!-- ১০০০, ৫০০, ২০০, ১০০ টাকার নোট গ্রহনযোগ্য নয়  -->
+              </div>
+
+              <div style="padding: 25px; background-color: #faf6e9; color: #ff2010;border:1px solid rgb(255, 225, 201); border-radius: 5px; margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 20px;font-weight: bold;">
+                Click the 'Close button' to close the Payment menu.
+                <!-- ১০০০, ৫০০, ২০০, ১০০ টাকার নোট গ্রহনযোগ্য নয়  -->
+              </div>
+              
+          </div>
+          <div class="column column1">
+            <h2 style="text-align: center;">Top Up</h2>
+           
+            <div class="info-card">
+              
+              <h3><strong>Previous Balance </strong> <br> <span class="gap" id="boardingStation">৳ 100</span></h3>
+            </div>
+
+
+            <div class="info-card">
+              <h3><strong>Selected Amount</strong><br> <span class="gap" id="selectedStation">৳ 200</span></h3>
+            </div>
+
+            <div class="info-card">
+              <h3><strong>Current Balance</strong> <span id="ticketPrice" class="gap">৳ 300</span></h3>
+
+            </div>
+
+            <div style="display: none;">
+                <div class="info-card">
+                    <h3><strong>Total Ticket Quantity</strong> <br><span id="selectedQuantity" class="gap">2</span></h3></div>
+        
+                    <div class="info-card">
+                    <h3><strong>Total Amount</strong><br><span id="totalAmount" class="gap">৳20</span> </h3></div>
+                  </div>
+
+            </div>
+
+      </div>
+      </div>
+      <a href="./completed.html">   <button class="modal-btn" id="continueBtnCash">Continue</button> </a>
+      <button class="modal-btn modal-close" id="closeModalCash">Close</button>
+    </div>
+  </div>
+
+
+    <!-- Modal structure -->
+    <div id="qrModal" class="modal-qr">
+      <div class="modal-qr-content">
+        <!-- <button class="close-btn-qr" >&times;</button> -->
+        <h2></h2>
+        <h3 style="font-weight: bold; color:rgb(22, 22, 22)">Scan this QR code with your phone through Bkash Application.</h3>
+        <img id="qrCode" class="qr-code" src="" alt="QR Code" width="350" height="350">
+        
+        <a href="./completed.html">
+          <button style="padding: 15px 30px; background-color: #00674f; color: white; font-size: 18px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;margin-top: 15px;">
+            Continue
+          </button> </a>
+          <button id="closeModalBtnqr" style="padding: 15px 30px; background-color: #f44336; color: white; font-size: 18px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;margin-top: 15px;">
+            Close
+          </button>
+         
+      </div>
+    </div>
+
+  <!--Modal :  mobile wallet Section -->
+  <div id="mobileModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-card">
+        <div class="container-col">
+          <div class="column column2">
+            <div class="payment-container">
+              <div class="payment-title">Select Mobile Wallet</div>
+          
+              <div class="wallet-option" id="openModalBtnqr">
+                <img src="./img/bkash.png" alt="Bkash Logo">
+                <div class="wallet-name">Bkash</div>
+              </div>
+          
+              <div class="wallet-option"  >
+                <img src="./img/nagad.png" alt="Nagad Logo" >
+                <div class="wallet-name">Nagad</div>
+                
+              </div>
+          
+              <div class="wallet-option"  >
+                <img src="./img/rocket.png" alt="Rocket Logo">
+                <div class="wallet-name">Rocket</div>
+              </div>
+            </div>
+ 
+          </div>
+
+          <div class="column column1">
+            <h2 style="text-align: center;">Top-up</h2>
+           
+            <div class="info-card">
+              
+              <h3><strong>Previous Balance </strong> <br> <span class="gap" id="boardingStation">৳ 100</span></h3>
+            </div>
+
+
+            <div class="info-card">
+              <h3><strong>Selected Amount</strong><br> <span class="gap" id="selectedStation">৳ 200</span></h3> </div>
+
+              <div class="info-card">
+              <h3><strong>Current Balance</strong> <span id="ticketPrice" class="gap">৳ 300</span></h3>
+            </div>
+            <div style="display: none;">
+            <div class="info-card">
+            <h3><strong>Total Ticket Quantity</strong> <br><span id="selectedQuantity" class="gap">2</span></h3>
+           </div>
+
+            <div class="info-card">
+            <h3><strong>Total Amount</strong><br><span id="totalAmount" class="gap">৳20</span> </h3>
+           </div>
+        </div>
+            
+          </div>
+      </div>
+      </div>
+      <a style="display: none;" href="./completed.html"> <button class="modal-btn" id="continueBtnmob">Continue</button></a>
+      <button class="modal-btn modal-close" id="closeModalmob">Close</button>
+    </div>
+  </div>
+
+
+
+  <!--Modal :  credit Section -->
+  <div id="cardModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-card">
+        <div class="container-col">
+          <div class="column column2">
+            <div class="pin" style="">
+              <h2 style="margin: 0 0 20px 0;">Please swipe your card</h2>
+              <label for="pin" class="pin-label" style="display: block; margin-bottom: 10px;">Enter PIN (for debit cards)</label>
+              <input type="password" id="pin" maxlength="4" style="width: 100%; padding: 10px; margin-bottom: 20px; font-size: 16px; text-align: center; border: 1px solid #ccc; border-radius: 5px;">
+
+              <button class="modal-btn">Enter PIN</button>
+          </div>
+          </div>
+
+          <div class="column column1">
+            <h2 style="text-align: center;">Top-up</h2>
+           
+            <div class="info-card">
+              
+              <h3><strong>Previous Balance  </strong> <br> <span class="gap" id="boardingStation">৳ 100</span></h3>
+            </div>
+
+
+            <div class="info-card">
+              <h3><strong>Selected Amount</strong><br> <span class="gap" id="selectedStation">৳ 200</span></h3>
+            </div>
+            <div class="info-card">
+              <h3><strong>Current Balance</strong> <span id="ticketPrice" class="gap">৳ 300</span></h3>
+
+            </div>
+
+        
+            <div style="display: none;">
+            <div class="info-card">
+            <h3><strong>Total Ticket Quantity</strong> <br><span id="selectedQuantity" class="gap">2</span></h3></div>
+
+            <div class="info-card">
+            <h3><strong>Total Amount</strong><br><span id="totalAmount" class="gap">৳20</span> </h3></div>
+        </div>
+        
+        
+        </div>
+      </div>
+      </div>
+      <a href="./completed.html">
+      <button class="modal-btn" id="continueBtncard">Continue</button> </a>
+      <button class="modal-btn modal-close"  id="closeModalcard">Close</button>
+    </div>
+  </div>
+
+
+  
+
+
+       
+  <!-- Footer Section -->
+  <div class="footer">
+    <p id="footerText" style="font-weight: bold;">Contact: 123-456-7890 | Email: support@metro.com</p>
+  </div>
+
+  <script>
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+
+
+  // Modal and button logic : credit card
+  const crdBtn = document.getElementById('cardBtn');
+    const crdModal = document.getElementById('cardModal');
+    const closeModalcrd = document.getElementById('closeModalcard');
+    const continueBtncrd = document.getElementById('continueBtncard');
+
+
+    crdBtn.addEventListener('click', () => {
+      crdModal.style.display = 'flex'; // Show modal
+    });
+
+    closeModalcrd.addEventListener('click', () => {
+      crdModal.style.display = 'none'; // Hide modal
+    });
+
+    continueBtncrd.addEventListener('click', () => {
+       
+      crdModal.style.display = 'none'; // Hide modal after action
+    });
+// -------------------------------------------------------------------------------------------------------------------------------------------
+  
+  
+  
+  
+    // Modal and button logic : Mobile
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileModal = document.getElementById('mobileModal');
+    const closeModalmob = document.getElementById('closeModalmob');
+    const continueBtnmob = document.getElementById('continueBtnmob');
+
+
+    mobileBtn.addEventListener('click', () => {
+      mobileModal.style.display = 'flex'; // Show modal
+    });
+
+    closeModalmob.addEventListener('click', () => {
+      mobileModal.style.display = 'none'; // Hide modal
+    });
+
+    continueBtnmob.addEventListener('click', () => {
+     
+      mobileModal.style.display = 'none'; // Hide modal after action
+    });
+// -------------------------------------------------------------------------------------------------------------------------------------------
+
+    // Modal and button logic : Cash
+    const cashBtn = document.getElementById('cashBtn');
+    const cashModal = document.getElementById('cashModal');
+    const closeModalCash = document.getElementById('closeModalCash');
+    const continueBtnCash = document.getElementById('continueBtnCash');
+
+    cashBtn.addEventListener('click', () => {
+      cashModal.style.display = 'flex'; // Show modal
+    });
+
+    closeModalCash.addEventListener('click', () => {
+      cashModal.style.display = 'none'; // Hide modal
+    });
+
+    continueBtnCash.addEventListener('click', () => {
+   
+      cashModal.style.display = 'none'; // Hide modal after action
+    });
+
+    // Language Toggle Logic
+    const langToggle = document.getElementById('langToggle');
+    const headerText = document.getElementById('headerText');
+    const footerText = document.getElementById('footerText');
+    const mobileWalletBtn = document.getElementById('mobileWalletBtn');
+    const cardBtn = document.getElementById('cardBtn');
+
+    langToggle.addEventListener('click', () => {
+      if (langToggle.innerText === 'বাংলা') {
+        headerText.innerText = 'ঢাকা ম্যাস ট্রানজিট কোম্পানি লিমিটেড (ডিএমটিসিএল)';
+        footerText.innerText = 'যোগাযোগ: ১২৩-৪৫৬-৭৮৯০ | ইমেইল: support@metro.com';
+        cashBtn.innerText = 'নগদ';
+        mobileBtn.innerText = 'মোবাইল ওয়ালেট';
+        cardBtn.innerText = 'ডেবিট/ক্রেডিট কার্ড';
+        langToggle.innerText = 'English';
+      } else {
+        headerText.innerText = 'Dhaka Mass Transit Company Limited (DMTCL)';
+        footerText.innerText = 'Contact: 123-456-7890 | Email: support@metro.com';
+        cashBtn.innerText = 'Cash';
+        mobileBtn.innerText = 'Mobile Wallet';
+        cardBtn.innerText = 'Debit/Credit Card';
+        langToggle.innerText = 'বাংলা';
+      }
+    });
+
+
+
+    const openModalBtnqr = document.getElementById('openModalBtnqr');
+    const closeModalBtnqr = document.getElementById('closeModalBtnqr');
+    const qrModal = document.getElementById('qrModal');
+    const qrCodeImage = document.getElementById('qrCode');
+
+    // Function to generate a random unique QR code URL using an API
+    function generateQRCode() {
+      const randomData = Math.random().toString(36).substr(2, 9); // Generates random string
+      const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${randomData}`;
+      qrCodeImage.src = qrCodeUrl;
+    }
+
+    // Show the modal and generate the QR code
+    openModalBtnqr.addEventListener('click', () => {
+      generateQRCode();
+      qrModal.style.display = 'flex';
+    });
+
+    // Hide the modal
+    closeModalBtnqr.addEventListener('click', () => {
+      qrModal.style.display = 'none';
+    });
+
+    // Close the modal when clicking outside of the modal content
+    window.addEventListener('click', (event) => {
+      if (event.target === qrModal) {
+        qrModal.style.display = 'none';
+      }
+    });
+
+
+    function goBack() {
+      window.history.back(); // Go to the previous page
+    }
+
+    function goNext() {
+      window.location.href = './next-page.html'; // Go to the next page (adjust the URL)
+    }
+  </script>
+
+</body>
+</html>

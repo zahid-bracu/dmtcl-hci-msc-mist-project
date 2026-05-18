@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Testing Structure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .tree {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .tree ul {
+            list-style-type: none;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .tree li {
+            margin: 0;
+            padding: 10px 5px;
+            line-height: 20px;
+            color: #2e2e2e;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .tree li::before, .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -20px;
+            border-left: 1px solid #2b2b2b;
+            border-top: 1px solid #353535;
+            width: 20px;
+            height: 100%;
+        }
+
+        .tree li::before {
+            top: 10px;
+            height: 100%;
+        }
+
+        .tree li:last-child::before {
+            height: 10px;
+        }
+
+        .tree li span {
+            display: inline-block;
+            border: 1px solid #000000;
+            padding: 5px 10px;
+            text-decoration: none;
+            background-color: #fff;
+            border-radius: 5px;
+            transition: all 0.5s;
+        }
+
+        .tree li span:hover {
+            background-color: #c8e4f8;
+            color: #000;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tree">
+        <ul>
+            <li>
+                <span>Home Page</span>
+                <ul>
+                    <li>
+                        <span>Single Journey Ticket</span>
+                        <ul>
+                            <li>
+                                <span>Destination Selection</span>
+                                <ul>
+                                    <li>
+                                        <span>Ticket Quantity Selection</span>
+                                        <ul>
+                                            <li>
+                                                <span>Payment</span>
+                                                <ul>
+                                                    <li><span>Completed</span></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Top Up</span>
+                        <ul>
+                            <li>
+                                <span>Select Amount</span>
+                                <ul>
+                                    <li>
+                                        <span>Payment</span>
+                                        <ul>
+                                            <li><span>Completed</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Check Balance</span>
+                        <ul>
+                            <li><span>MRT Pass Details</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var treeToggles = document.querySelectorAll(".tree li span");
+
+            treeToggles.forEach(function(toggle) {
+                toggle.addEventListener("click", function() {
+                    var nextUl = this.nextElementSibling;
+                    if (nextUl) {
+                        nextUl.classList.toggle("hidden");
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

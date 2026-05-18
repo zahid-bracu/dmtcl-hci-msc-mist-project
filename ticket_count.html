@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRT Vending Machine</title>
+  <link rel="stylesheet" href="./style_ticket_count.css">
+  <style>
+
+
+    /* Selected button style */
+    .ticket-btn.selected {
+      background-color: #f44336; /* Change the selected button to orange */
+      border: none;
+      color: white;
+    }
+
+    .dark-theme .ticket-btn.selected {
+      background-color: #fc685d;;
+    }
+
+    .button-container-btn {
+      margin-top: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+    }
+
+    .footer, .header {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .main {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar Section -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar">
+      60%
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <div class="header">
+    <!-- Logo on the left side -->
+    <img src="./dmtcl.png" alt="DMTC Logo">
+    <h2 id="headerText">Dhaka Mass Transit Company Limited (DMTCL)</h2>
+    <div class="top-right">
+      <button id="themeToggle" style="font-weight: bold;" class="nav-btn">Dark</button>
+      <button id="langToggle" style="font-weight: bold;" class="nav-btn">বাংলা</button>
+    </div>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="main" style="margin-top: 20px;">
+    <h1 style="color:#00674f;" id="selectStation">Single Journey Ticket Service</h1>  
+    <h2 id="ticketHeading" style="margin-top: 15px;">Please select Ticket Quantity</h2>
+
+    <!-- Ticket Button Selection -->
+    <div class="button-container">
+      <button class="ticket-btn" id="ticket1" data-value="1">1</button>
+      <button class="ticket-btn" id="ticket2" data-value="2">2</button>
+      <button class="ticket-btn" id="ticket3" data-value="3">3</button>
+      <button class="ticket-btn" id="ticket4" data-value="4">4</button>
+      <button class="ticket-btn" id="ticket5" data-value="5">5</button>
+    </div>
+
+    <!-- Information label for how many tickets are selected -->
+    <h2 id="ticketCountInfo" style="font-weight: bold; margin: 12px 0px 12px 0px; text-align: center;">No tickets selected.</h2>
+
+    <!-- Informational text above continue button to describe next step -->
+    <!-- <p id="actionText" style="font-weight: bold; text-align: center;">Click 'Continue' to proceed with your selection.</p> -->
+
+    <div class="button-container-btn">
+      <button id="confirmButton">Continue</button>
+      <button id="clearButton">Clear</button>
+    </div>
+
+
+      <!-- Container for Back and Next Buttons -->
+  <div class="button-container">
+    <!-- Back Button -->
+   <button class="btn-arrow btn-back" onclick="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back
+    </button>
+   
+    <!-- Next Button -->
+    <button class="btn-arrow btn-next" onclick="goNext()">
+      Next
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+  </div>
+  </div>
+
+ 
+
+  <!-- Footer Section -->
+  <div class="footer">
+    <p id="footerText" style="font-weight: bold;">Contact: 123-456-7890 | Email: support@metro.com</p>
+  </div>
+
+  <script>
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+    });
+
+    // Language Toggle Logic
+    const langToggle = document.getElementById('langToggle');
+    const headerText = document.getElementById('headerText');
+    const footerText = document.getElementById('footerText');
+    const ticketHeading = document.getElementById('ticketHeading');
+    const ticketCountInfo = document.getElementById('ticketCountInfo');
+    const actionText = document.getElementById('actionText');
+
+    // Ticket Buttons
+    const ticket1 = document.getElementById('ticket1');
+    const ticket2 = document.getElementById('ticket2');
+    const ticket3 = document.getElementById('ticket3');
+    const ticket4 = document.getElementById('ticket4');
+    const ticket5 = document.getElementById('ticket5');
+
+    const confirmButton = document.getElementById('confirmButton');
+    const clearButton = document.getElementById('clearButton');
+
+    // Variable to store the selected ticket count
+    let selectedTickets = 0;
+
+    // Function to update the ticket count information
+    function updateTicketCountInfo() {
+      if (selectedTickets === 0) {
+        ticketCountInfo.innerText = 'No tickets selected.';
+      } else {
+        ticketCountInfo.innerText = `You have selected ${selectedTickets} ticket(s).`;
+      }
+    }
+
+    // Add event listeners to each ticket button
+    const ticketButtons = [ticket1, ticket2, ticket3, ticket4, ticket5];
+    ticketButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove 'selected' class from all buttons
+        ticketButtons.forEach(btn => btn.classList.remove('selected'));
+
+        // Add 'selected' class to the clicked button
+        button.classList.add('selected');
+
+        // Update the selectedTickets variable
+        selectedTickets = parseInt(button.getAttribute('data-value'));
+
+        // Update the ticket count information
+        updateTicketCountInfo();
+      });
+    });
+
+    // Clear button logic
+    clearButton.addEventListener('click', () => {
+      // Reset selected tickets
+      selectedTickets = 0;
+
+      // Remove 'selected' class from all buttons
+      ticketButtons.forEach(btn => btn.classList.remove('selected'));
+
+      // Update the ticket count information
+      updateTicketCountInfo();
+    });
+
+    // Confirm button logic
+    confirmButton.addEventListener('click', () => {
+      if (selectedTickets === 0) {
+        alert('Please select a ticket quantity before proceeding.');
+      } else {
+        window.location.href = "./payment_pass.html";
+      }
+    });
+
+    // Language toggle functionality
+    langToggle.addEventListener('click', () => {
+      if (langToggle.innerText === 'বাংলা') {
+        // Change buttons, header, and footer to Bangla
+        headerText.innerText = 'ঢাকা ম্যাস ট্রানজিট কোম্পানি লিমিটেড (ডিএমটিসিএল)';
+        footerText.innerText = 'যোগাযোগ: ১২৩-৪৫৬-৭৮৯০ | ইমেইল: support@metro.com';
+        ticketHeading.innerText = 'অনুগ্রহ করে টিকিটের পরিমাণ নির্বাচন করুন';
+        ticket1.innerText = '১';
+        ticket2.innerText = '২';
+        ticket3.innerText = '৩';
+        ticket4.innerText = '৪';
+        ticket5.innerText = '৫';
+        ticketCountInfo.innerText = 'কোন টিকিট নির্বাচন করা হয়নি।';
+        
+        confirmButton.innerText = 'চালিয়ে যান';
+        clearButton.innerText = 'মুছুন';
+        langToggle.innerText = 'English';
+      } else {
+        // Change everything back to English
+        headerText.innerText = 'Dhaka Mass Transit Company Limited (DMTCL)';
+        footerText.innerText = 'Contact: 123-456-7890 | Email: support@metro.com';
+        ticketHeading.innerText = 'Please select Ticket Quantity';
+        ticket1.innerText = '1';
+        ticket2.innerText = '2';
+        ticket3.innerText = '3';
+        ticket4.innerText = '4';
+        ticket5.innerText = '5';
+        ticketCountInfo.innerText = 'No tickets selected.';
+        
+        confirmButton.innerText = 'Continue';
+        clearButton.innerText = 'Clear';
+        langToggle.innerText = 'বাংলা';
+      }
+    });
+
+
+
+    function goBack() {
+      window.history.back(); // Go to the previous page
+    }
+
+    function goNext() {
+      window.location.href = './payment_pass.html'; // Go to the next page (adjust the URL)
+    }
+  </script>
+</body>
+</html>
